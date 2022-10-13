@@ -1,0 +1,34 @@
+global key %creates keyboard variable
+InitKeyboard(); %initializes the use of the keyboard
+    while(1) %always true
+        pause(0.1); %pauses for a very short time
+        switch key; %if statements
+            case 'uparrow' %If pressing up (user must constantly hold up)
+                disp('up');
+                brick.StopAllMotors; %Move forward
+                brick.MoveMotor('A',-100);
+                brick.MoveMotor('D',-100);
+                
+            case 'downarrow' %stop button no need to hold
+                brick.StopAllMotors;
+            case 'leftarrow' %infinite turn, user must press forward when they want to end the turn
+                brick.StopAllMotors;
+                brick.MoveMotor('A',0); %only moves one motor
+                brick.MoveMotor('D',-100);
+                disp('left');
+            case 'rightarrow' %right turn
+                brick.StopAllMotors;
+                brick.MoveMotor('A',-100); %moves only one motor
+                brick.MoveMotor('D',0);
+                disp('right');
+            case 0 %if nothing is pressed
+                
+            case q %press q to end the program
+                break;
+        end
+    end %ends the loops
+    CloseKeyboard(); %exits the keyboard
+
+        
+    
+
