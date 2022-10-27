@@ -1,0 +1,20 @@
+while 1
+   color=brick.ColorCode(1);
+  
+   if (color == 2)
+       pause(5);
+       brick.MoveMotor('A',-30);
+       brick.MoveMotor('D',-30);
+   end
+   if (color == 3)
+       brick.MoveMotor('A',-50);
+       brick.MoveMotor('D',-100);
+   end
+   if(color == 4)
+       brick.MoveMotor('A',50);
+       brick.MoveMotor('D', 50);
+   end
+   if(color == 5)
+       brick.StopAllMotors;
+   end
+end
