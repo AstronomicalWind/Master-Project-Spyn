@@ -1,0 +1,62 @@
+brick.SetColorMode(1, 2);  
+count = 0;
+while 1
+    color=brick.ColorCode(1);
+    touch = brick.TouchPressed(2);
+    bump = brick.TouchPressed(3);
+    distance = brick.UltrasonicDist(4);
+    display(distance);
+    if touch
+       brick.MoveMotor('AD', 30);
+       pause(2);
+       brick.MoveMotor('D',-25);
+       brick.MoveMotor('A',0);
+       pause(2);
+    end
+
+    if (distance<10)
+       brick.MoveMotor('D',-25);
+       brick.MoveMotor('A',0);
+       pause(3);
+   end
+    
+    if bump
+        brick.MoveMotor('A',-25);
+        brick.MoveMotor('D',0);
+        pause(3);
+    end
+
+    if (color == 1)
+        brick.MoveMotor('AD', -50);
+    end
+    if (color == 2)
+        pause(5);
+        brick.MoveMotor('AD',-50);
+    end
+
+    if (color == 3)
+        pause(5);
+        brick.MoveMotor('AD',-50);
+    end
+    if(color == 4)
+        count = count +1;
+        if(count == 2)
+           brick.StopAllMotors;
+        else
+            brick.MoveMotor('AD', -50);
+        end
+    end
+    if(color == 5)
+        pause(5);
+        brick.MoveMotor('AD',-50);
+    end
+    if (color==6)
+        brick.StopAllMotors;
+    end
+end
+
+    
+
+
+
+
